@@ -324,14 +324,11 @@ h1, h2, h3, h4, h5, h6, figure {
 				}
 			}
 			
-			&.active {
-				> a {
+			&>a:hover {
 					color: $brand-white;
 					position: relative;
-					.scrolled & {
-						color: rgba(0, 0, 0, .7);
-					}
-					&:after{
+					// color: rgba(0, 0, 0, .7);
+					&::after{
 						position: absolute;
 						bottom: 25px;
 						left: 0;
@@ -343,7 +340,26 @@ h1, h2, h3, h4, h5, h6, figure {
 						margin: 0 auto;
 					}
 				}
-			}
+			// &.active {
+			// 	> a {
+			// 		color: $brand-white;
+			// 		position: relative;
+			// 		.scrolled & {
+			// 			color: rgba(0, 0, 0, .7);
+			// 		}
+			// 		&:after{
+			// 			position: absolute;
+			// 			bottom: 25px;
+			// 			left: 0;
+			// 			right: 0;
+			// 			content: '';
+			// 			width: 30px;
+			// 			height: 2px;
+			// 			background: $brand-primary;
+			// 			margin: 0 auto;
+			// 		}
+			// 	}
+			// }
 		}
 	}
 }
@@ -541,7 +557,7 @@ h1, h2, h3, h4, h5, h6, figure {
 	.fh5co-item {
 		float: left;
 		width: 100%;
-		backround: $brand-white;
+		background: transparent; //$brand-white 
 		&.margin_top {
 			margin-top: 150px; 
 			@media screen and (max-width: $screen-xs) {
@@ -740,10 +756,7 @@ h1, h2, h3, h4, h5, h6, figure {
 			}
 		}
 	}
-
 }
-
-
 
 .fh5co-bg-section{
 	background: rgba($brand-primary,.03);
@@ -1149,7 +1162,7 @@ h1, h2, h3, h4, h5, h6, figure {
 		-moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.06);
 		box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.06);
 		&:hover{
-			webkit-box-shadow: 0px 8px 16px -4px rgba(0,0,0,0.13);
+			-webkit-box-shadow: 0px 8px 16px -4px rgba(0,0,0,0.13);
 -moz-box-shadow: 0px 8px 16px -4px rgba(0,0,0,0.13);
 box-shadow: 0px 8px 16px -4px rgba(0,0,0,0.13);
 		}
@@ -1649,12 +1662,14 @@ box-shadow: 0px 8px 16px -4px rgba(0,0,0,0.13);
 	}
 }
 .btn-danger {
+	display: inline-block; 
+	margin: 1rem; 
 	background: $brand-danger;
 	color: $brand-white;
 	border: 2px solid $brand-danger;
 	&:hover, &:focus, &:active {
-		background: darken($brand-danger, 5%)!important;
-		border-color: darken($brand-danger, 5%)!important;
+		background: darken($brand-danger, 10%)!important;
+		border-color: darken($brand-danger, 10%)!important;
 	}
 	&.btn-outline {
 		background: transparent;
@@ -1710,17 +1725,17 @@ box-shadow: 0px 8px 16px -4px rgba(0,0,0,0.13);
 	}
 }
 .form-control {
-	box-shadow: none;
-	background: transparent;
-	border: 2px solid rgba(255, 255, 255, 0.3);
+	box-shadow: inset 2px 2px 5px black;
+	background-color: whitesmoke;
+	// border: 2px solid rgba(255, 255, 255, 0.3);
 	height: 54px;
-	font-size: 20px;
-	font-weight: 300;
-	font-family: $font-secondary;
-	color: $brand-white;
+	font-size: 25px;
+	font-weight: 500;
+	font-family: $font-primary;
+	color: black;
   	&:active, &:focus {
   		outline: none;
-		box-shadow: none;
+		box-shadow: 5px 5px 12px black;
 		border-color: $brand-white;
   }
 }

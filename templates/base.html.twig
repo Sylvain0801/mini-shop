@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="{{ asset('assets/css/icomoon.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/flexslider.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/sass/style.css') }}">
         <script src="{{ asset('assets/js/modernizr-2.6.2.min.js') }}"></script>
         {% endblock %}
 
@@ -19,6 +19,7 @@
     <body>
         {% include "includes/header.html.twig" %}
         {% block body %}{% endblock %}
+        {% include "includes/footer.html.twig" %}
         {% block javascripts %}
             <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
 	        <script src="{{ asset('assets/js/jquery.easing.1.3.js') }}"></script>
