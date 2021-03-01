@@ -316,11 +316,7 @@ h1, h2, h3, h4, h5, h6, figure {
 						.scrolled & {
 							color: rgba(0, 0, 0, .7);
 						}
-					}
-					.dropdown {
-						// visibility: visible;
-						// opacity: 1;
-					}
+					}					
 				}
 			}
 			
@@ -334,7 +330,7 @@ h1, h2, h3, h4, h5, h6, figure {
 						left: 0;
 						right: 0;
 						content: '';
-						width: 30px;
+						width: 40px;
 						height: 2px;
 						background: $brand-primary;
 						margin: 0 auto;
