@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}La boutique design - Mon espace{% endblock %}
+
+{% block body %}
+<header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner" style="background-image: url('../../assets/images/main-bg-products.jpg');" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <div class="display-t js-fullheight">
+            <div class="display-tc js-fullheight animate-box" data-animate-effect="fadeIn">
+              <h1>Mon espace</h1>
+              <h2>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</h2>
+                <a href="{{ path('app_login') }}" class="btn-danger btn-lg" role="button" style="max-width:200px;">SE CONNECTER</a>
+                <a href="{{ path('app_register') }}" class="btn-danger btn-lg" role="button" style="max-width:200px;">S'INSCRIRE</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</header>
+{% endblock %}

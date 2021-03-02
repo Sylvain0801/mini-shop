@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon espace - La boutique design{% endblock %}
+
+{% block body %}
+<header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner" style="max-height:50vh; background-image: url('../../assets/images/main-bg-products.jpg');" data-stellar-background-ratio="0.5"></header>
+<div class="container">
+    <div class="row" style="display:flex; justify-content:center; margin-top:3rem;">
+        <div class="col-xs-12 col-sm-8 col-md-6">
+            <p>Un email contenant un lien de réinitialisation de mot de passe vous a été envoyé.<br>
+               Ce mien expirera dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.</p>
+            <p>Si vous ne recevez pas d'email, merci de vérifier votre dossier des indésirables ou <a href="{{ path('app_forgot_password_request') }}">réessayez</a>.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

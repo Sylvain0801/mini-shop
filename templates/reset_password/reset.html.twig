@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon espace - La boutique design
+{% endblock %}
+
+{% block body %}
+	<header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner" style="max-height:50vh; background-image: url('../../assets/images/main-bg-products.jpg');" data-stellar-background-ratio="0.5"></header>
+	<div class="container">
+		<div class="row" style="display:flex; justify-content:center;">
+			<div class="col-xs-12 col-sm-8 col-md-6 form-container">
+				<div class="form-group">
+					<h1 class="text-center" style="color:white; margin-top: 2rem;">Réinitialiser votre mot de passe</h1>
+					{{ form_start(resetForm) }}
+            {{ form_row(resetForm.plainPassword) }}
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-outline btn-lg">Réinitialiser</button>
+            </div>
+					{{ form_end(resetForm) }}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

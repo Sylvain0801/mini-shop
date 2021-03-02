@@ -1,36 +1,40 @@
 <div class="fh5co-loader"></div>
 	
-	<div id="page">
-	<nav class="fh5co-nav" role="navigation">
-		<!-- <div class="top-menu"> -->
-			<div class="container">
-				<div class="row">
-					<div class="col-xs-12 text-center logo-wrap">
-						<div id="fh5co-logo"><a href="{{ path('home') }}">La boutique design<span>.</span></a></div>
-					</div>
-					<div class="col-xs-12 text-center menu-1 menu-wrap">
-						<ul>
-							<li><a href="{{ path('home') }}">Accueil</a></li>
-							<li class="has-dropdown">
-								<a href="products.html">Nos produits</a>
-								<ul class="dropdown">
-									<li><a href="#">Mobilier</a></li>
-									<li><a href="#">Déco</a></li>
-								</ul>
-							</li>
-							<li><a href="about.html">À propos</a></li>
-							<li><a href="contact.html">Contact</a></li>
-							<li class="has-dropdown">
-								<a href="{{ path('users_home') }}">Mon espace</a>
-								<ul class="dropdown">
-									<li><a href="{{ path('users_connexion') }}">Se connecter</a></li>
-									<li><a href="{{ path('users_inscription') }}">S'inscrire</a></li>
-								</ul>
-							</li>
-						</ul>
-					</div>
+<div id="page">	
+<nav class="fh5co-nav" role="navigation">
+	<!-- <div class="top-menu"> -->
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 text-center logo-wrap">
+					<div id="fh5co-logo"><a href="{{ path('home') }}">La boutique design<span>.</span></a></div>
 				</div>
-				
+				<div class="col-xs-12 text-center menu-1 menu-wrap">
+					<ul>
+						<li><a href="{{ path('home') }}">Accueil</a></li>
+						<li class="has-dropdown">
+							<a href="products.html">Nos produits</a>
+							<ul class="dropdown">
+								<li><a href="#">Mobilier</a></li>
+								<li><a href="#">Déco</a></li>
+							</ul>
+						</li>
+						<li><a href="about.html">À propos</a></li>
+						<li><a href="contact.html">Contact</a></li>
+						<li class="has-dropdown">
+							<a href="{{ path('user') }}">Mon espace</a>
+							<ul class="dropdown">
+								<li><a href="{{ path('app_login') }}">Se connecter</a></li>
+								<li><a href="{{ path('app_register') }}">S'inscrire</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
 			</div>
-		<!-- </div> -->
-	</nav>
+		</div>
+</nav>
+{% if app.user %}
+    <div class="connected">
+        <h5><i class="icon-profile-male"></i>&nbsp;{{ app.user.username }}</h5>
+        <a href="{{ path('app_logout') }}">Se déconnecter</i></a>
+    </div>
+{% endif %}

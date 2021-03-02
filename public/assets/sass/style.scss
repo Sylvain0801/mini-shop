@@ -1777,3 +1777,35 @@ textarea {
 .bootstrap-datetimepicker-widget {
 	color: $brand-black!important;
 }
+.connected {
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	z-index: 3000;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 0.5rem;
+	
+	& i.icon-lock {
+		color: $brand-primary;
+	}
+	& a {
+		text-decoration: underline;
+		font-weight: 800;
+    font-size: 16px;
+	}
+	& h5 {
+		margin: 0;
+		color: $brand-gray;
+		font-size: 18px;
+	}
+}
+.form-container {
+	border: 1px solid;
+	margin-top: 2rem;
+	padding: 0 2rem;
+	border-radius: 10px;
+	box-shadow: 5px 5px 15px black;
+}
