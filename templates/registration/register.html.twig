@@ -12,7 +12,7 @@
       <div class="form-group">
         <h1 class="text-center" style="color:white; margin-top: 2rem;">S'inscrire</h1>
         {% for flashError in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+          <div class="alert alert-danger" role="alert">{{ flashError }}</div>
         {% endfor %}
         {{ form_start(registrationForm) }}
             {{ form_row(registrationForm.email) }}
