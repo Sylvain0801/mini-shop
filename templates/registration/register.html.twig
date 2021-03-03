@@ -17,8 +17,10 @@
         {{ form_start(registrationForm) }}
             {{ form_row(registrationForm.email) }}
             {{ form_row(registrationForm.plainPassword) }}
-            {{ form_widget(registrationForm.agreeTerms) }}
-            {{ form_label(registrationForm.agreeTerms) }}
+            <div class="form-group">
+              {{ form_widget(registrationForm.agreeTerms) }}
+              {{ form_label(registrationForm.agreeTerms) }}
+            </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-primary btn-outline btn-lg">Valider</button>
                 <a href="{{ path('app_login') }}" style="text-decoration: underline;float:right;">Déjà inscrit ?</a>

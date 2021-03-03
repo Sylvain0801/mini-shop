@@ -5,11 +5,12 @@
 
 table {
   background-color: $table-bg;
+  color: $brand-white;
 }
 caption {
   padding-top: $table-cell-padding;
   padding-bottom: $table-cell-padding;
-  color: $text-muted;
+  color: $brand-white;
   text-align: left;
 }
 th {
@@ -23,6 +24,8 @@ th {
   width: 100%;
   max-width: 100%;
   margin-bottom: $line-height-computed;
+  font-size: 20px;
+
   // Cells
   > thead,
   > tbody,

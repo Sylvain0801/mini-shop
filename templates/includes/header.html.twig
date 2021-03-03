@@ -25,6 +25,9 @@
 							<ul class="dropdown">
 								<li><a href="{{ path('app_login') }}">Se connecter</a></li>
 								<li><a href="{{ path('app_register') }}">S'inscrire</a></li>
+								{% if is_granted('ROLE_ADMIN') %}
+									<li><a href="{{ path('admin_home') }}">Administrateur</a></li>
+								{% endif %}
 							</ul>
 						</li>
 					</ul>

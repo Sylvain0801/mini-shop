@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Espace administrateur - La boutique design{% endblock %}
+
+{% block body %}
+<header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner" style="background-image: url('../../assets/images/main-bg-admin.jpg');" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <div class="display-t js-fullheight">
+            <div class="display-tc js-fullheight animate-box" data-animate-effect="fadeIn">
+              <h1>Espace administrateur</h1>
+              <h2>Bonjour {{ app.user.username }}</h2>
+                <a href="{{ path('admin_liste_users') }}" class="btn-danger btn-lg" role="button" style="max-width:200px;">GERER LES UTILISATEURS</a>
+                <a href="" class="btn-danger btn-lg" role="button" style="max-width:200px;">GERER LES PRODUITS</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</header>
+{% endblock %}

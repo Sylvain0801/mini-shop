@@ -38,7 +38,6 @@ class RegistrationFormType extends AbstractType
                 ],
             ])
             ->add('agreeTerms', CheckboxType::class, [
-                'attr' => ['class' => 'form-group'],
                 'label' => " J'accepte les conditions d'utilisation",
                 'mapped' => false,
                 'constraints' => [
