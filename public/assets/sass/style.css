@@ -2411,4 +2411,18 @@ input[type="checkbox"]:checked:before {
 #user_edit_roles_1 {
   margin-left: 4rem;
 }
+
+.container-small {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-bottom: 3rem;
+}
 /*# sourceMappingURL=style.css.map */

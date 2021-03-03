@@ -14,8 +14,7 @@
 						<li class="has-dropdown">
 							<a href="products.html">Nos produits</a>
 							<ul class="dropdown">
-								<li><a href="#">Mobilier</a></li>
-								<li><a href="#">Déco</a></li>
+								{{ render(controller('App\\Controller\\CategoryController::categoryList')) }}
 							</ul>
 						</li>
 						<li><a href="about.html">À propos</a></li>
@@ -37,7 +36,7 @@
 </nav>
 {% if app.user %}
     <div class="connected">
-        <h5><i class="icon-profile-male"></i>&nbsp;{{ app.user.username }}</h5>
+        <h5><i class="icon-user"></i>&nbsp;{{ app.user.username }}</h5>
         <a href="{{ path('app_logout') }}">Se déconnecter</i></a>
     </div>
 {% endif %}

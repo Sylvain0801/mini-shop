@@ -20,15 +20,15 @@ class AdminController extends AbstractController
         return $this->render('admin/index.html.twig');
     }
 
-    #[Route('/liste-users', name: 'liste_users')]
+    #[Route('/user/list', name: 'user_list')]
     public function usersList(UserRepository $userRepository): Response
     {
-        return $this->render('admin/userslist.html.twig', [
+        return $this->render('admin/user/userslist.html.twig', [
             'users' => $userRepository->findAll()
         ]);
     }
 
-    #[Route('/edit-user/{id}', name: 'edit_user')]
+    #[Route('/user/edit/{id}', name: 'user_edit')]
     public function editUser(User $user, Request $request): Response
     {
         $form = $this->createForm(UserEditType::class, $user);
@@ -40,23 +40,23 @@ class AdminController extends AbstractController
             $em->flush();
 
             $this->addFlash('modified_user', 'L\'utilisateur a été modifié avec succès');
-            return $this->redirectToRoute('admin_liste_users');
+            return $this->redirectToRoute('admin_user_list');
         }
-        return $this->render('admin/edituser.html.twig', [
+        return $this->render('admin/user/edituser.html.twig', [
             'userEditForm' => $form->createView()
             ]);
         }
         
-        #[Route('/delete-user/{id}', name: 'delete_user')]
-        public function delete(User $user): RedirectResponse
-        {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($user);
-            $em->flush();
-            
-            $this->addFlash('delete_user', 'L\'utilisateur a été supprimé avec succès');
+    #[Route('/user/delete/{id}', name: 'user_delete')]
+    public function delete(User $user): RedirectResponse
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($user);
+        $em->flush();
+        
+        $this->addFlash('delete_user', 'L\'utilisateur a été supprimé avec succès');
 
-        return $this->redirectToRoute('admin_liste_users');
+    return $this->redirectToRoute('admin_user_list');
     }
 
 

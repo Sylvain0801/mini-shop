@@ -12,8 +12,15 @@
             <div class="display-tc js-fullheight animate-box" data-animate-effect="fadeIn">
               <h1>Espace administrateur</h1>
               <h2>Bonjour {{ app.user.username }}</h2>
-                <a href="{{ path('admin_liste_users') }}" class="btn-danger btn-lg" role="button" style="max-width:200px;">GERER LES UTILISATEURS</a>
-                <a href="" class="btn-danger btn-lg" role="button" style="max-width:200px;">GERER LES PRODUITS</a>
+                <a href="{{ path('admin_user_list') }}" class="btn-danger btn-lg" role="button" style="max-width:200px;">
+                  <i class="icon-user"></i>&nbsp;GERER LES UTILISATEURS
+                </a>
+                <a href="{{ path('admin_product_list') }}" class="btn-danger btn-lg" role="button" style="max-width:200px;">
+                  <i class="icon-tools"></i>&nbsp;GERER LES PRODUITS
+                </a>
+                <a href="{{ path('admin_category_list') }}" class="btn-danger btn-lg" role="button" style="max-width:200px;">
+                  <i class="icon-tools-2"></i>&nbsp;GERER LES CATEGORIES
+                </a>
               </div>
             </div>
           </div>

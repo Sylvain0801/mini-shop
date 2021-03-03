@@ -1843,3 +1843,10 @@ input[type="checkbox"]:checked {
 #user_edit_roles_1 {
 	margin-left: 4rem;
 }
+.container-small {
+	height: 100%;
+	display: flex; 
+	align-items: flex-end;
+	justify-content: center;
+	padding-bottom: 3rem;
+}

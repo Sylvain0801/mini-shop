@@ -3,9 +3,9 @@
 {% block title %}Espace administrateur - La boutique design{% endblock %}
 
 {% block body %}
-<header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner" style="max-height:50vh; background-image: url('../../assets/images/main-bg-admin.jpg')" data-stellar-background-ratio="0.5">
+<header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner" style="max-height:50vh; background-image: url('../../../assets/images/main-bg-admin.jpg')" data-stellar-background-ratio="0.5">
   <div class="overlay"></div>
-  <div class="container" style="height: 100%; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 3rem;">
+  <div class="container container-small">
     <div class="row">
       <div class="col-md-12 text-center display-tc">
         <h1>Espace administrateur</h1>
@@ -45,10 +45,10 @@
           {% endif %}
         </td>
         <td>
-          <a href="{{ path('admin_edit_user', {'id':user.id}) }}" class="btn-warning btn-lg" role="button" style="padding:6px 3px 3px 4px; font-size:20px; line-height: 1; margin: 0 1rem">
-            <i class="icon-edit"></i>
+          <a href="{{ path('admin_user_edit', {'id':user.id}) }}" class="btn-warning btn-lg" role="button" style="padding:6px 3px 3px 4px; font-size:20px; line-height: 1; margin: 0 1rem">
+            <i class="icon-pencil"></i>
           </a>
-          <a href="{{ path('admin_delete_user', {'id':user.id}) }}" class="btn-danger btn-lg" role="button" style="padding:5px; font-size:20px; line-height: 1; margin: 0 1rem" onclick="return confirm('L\'utilisateur {{ user.email }} va être définitivement supprimé, ce choix doit être confirmé ?')">
+          <a href="{{ path('admin_user_delete', {'id':user.id}) }}" class="btn-danger btn-lg" role="button" style="padding:5px; font-size:20px; line-height: 1; margin: 0 1rem" onclick="return confirm('L\'utilisateur {{ user.email }} va être définitivement supprimé, ce choix doit être confirmé ?')">
             <i class="icon-trash"></i>
           </a>
         </td>
@@ -56,5 +56,8 @@
       {% endfor %}
     </tbody>
   </table>
+  <a href="{{ path('admin_home') }}" class="btn-success btn-lg" role="button" style="float:right">
+    <i class="icon-back"></i>&nbsp;RETOUR ADMIN
+  </a>
 </div>
 {% endblock %}
