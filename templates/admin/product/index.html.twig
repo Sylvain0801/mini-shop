@@ -3,7 +3,7 @@
 {% block title %}Espace administrateur - La boutique design{% endblock %}
 
 {% block body %}
-<header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner" style="max-height:50vh; background-image: url('../../assets/images/main-bg-admin.jpg')" data-stellar-background-ratio="0.5">
+<header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner" style="max-height:60vh; background-image: url('../..//assets/images/main-bg-products.jpg')" data-stellar-background-ratio="0.5">
   <div class="overlay"></div>
   <div class="container container-small">
     <div class="row">
@@ -20,7 +20,7 @@
       <div class="alert alert-success" role="alert">{{ message }}</div>
     {% endfor %}
   </div>
-    <a href="" class="btn-success btn-lg" role="button" style="float:right">
+    <a href="{{ path('admin_product_new') }}" class="btn-success btn-lg" role="button" style="float:right">
       <i class="icon-plus"></i>&nbsp;CREER UN NOUVEAU PRODUIT
     </a>
 </div>
