@@ -30,7 +30,7 @@ class ProductType extends AbstractType
                 'label' => 'Catégorie'
             ])
             ->add('description', TextareaType::class, [
-                'attr' => ['class' => 'form-control'],
+                'attr' => ['class' => 'form-control', 'rows' => '7'],
                 'label' => 'Description'
             ])
             ->add('price', MoneyType::class, [

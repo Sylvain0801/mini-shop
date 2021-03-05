@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Product;
 use App\Form\ProductType;
+use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,15 +14,18 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProductController extends AbstractController
 {
     #[Route('/list', name: 'list')]
-    public function index(): Response
+    public function index(ProductRepository $productRepository): Response
     {
-        return $this->render('admin/product/index.html.twig');
+        return $this->render('admin/product/index.html.twig', [
+            'products' => $productRepository->findAll()
+        ]);
     }
 
     #[Route('/new', name: 'new')]
     public function newProduct(Request $request): Response
     {
         $product = new Product();
+        $product->setCreatedBy($this->getUser());
         $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
 

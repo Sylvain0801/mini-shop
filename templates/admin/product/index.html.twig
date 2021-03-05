@@ -13,15 +13,66 @@
     </div>
   </div>
 </header>
-<div class="container" style="margin-top: 1rem">
+<div class="container" style="margin-top: 3rem">
   <div class="text-center">
     <h2 style="color:white;">Gestion de vos produits</h2>
-    {% for message in app.flashes('modified_user') %}
+    {% for message in app.flashes('new_product') %}
       <div class="alert alert-success" role="alert">{{ message }}</div>
     {% endfor %}
-  </div>
-    <a href="{{ path('admin_product_new') }}" class="btn-success btn-lg" role="button" style="float:right">
-      <i class="icon-plus"></i>&nbsp;CREER UN NOUVEAU PRODUIT
+    <a href="{{ path('admin_product_new') }}" class="btn-success btn-lg" role="button" style="float:right; margin-bottom: 3rem;">
+      <i class="icon-plus"></i>&nbsp;CREER UN PRODUIT
     </a>
+  </div>
+  <div class="products-container">
+    {% for product in products %}
+      <div class="card-admin">
+        <img src="{{ vich_uploader_asset(product, 'imageFile') }}" alt="{{ product.name }}">
+        <div class="card-title">
+          <h4>{{ product.name }}</h4>
+        </div>
+        <h5 class="card-category">
+          Catégorie : {{ product.category.name }}
+        </h5>
+        <p class="card-description">
+          {{ product.description }}
+        </p>
+        <div class="card-price">
+          <h4>Prix de vente : {{ product.price|number_format(2, ',', ' ') }} €</h4>
+        </div>
+        <p class="card-created">
+          Créé le {{ product.createdAt|date("d/m/Y") }}
+        </p>
+        {% if product.createdAt != product.updatedAt %}
+          <p class="card-updated">
+            Modifié le {{ product.updatedAt|date("d/m/Y") }}
+          </p>
+        {% endif %}
+        <div class="card-firstpage">
+          <label class="switch">
+            <input type="checkbox" {{ (product.firstpage) ? 'checked' : '' }}>
+            <span class="slider round"></span>
+          </label>
+          <p>&nbsp;Première page</p>
+        </div>
+        <div class="card-active">
+          <label class="switch">
+            <input type="checkbox" {{ (product.firstpage) ? 'checked' : '' }}>
+            <span class="slider round"></span>
+          </label>
+          <p>&nbsp;Active</p>
+        </div>
+        <div class="card-buttons">
+          <a href="" class="btn-warning btn-lg" role="button" style="padding:6px 3px 3px 4px;">
+            <i class="icon-pencil"></i>&nbsp;Editer
+          </a>
+          <a href="" class="btn-danger btn-lg" role="button" style="padding:5px;" onclick="">
+            <i class="icon-trash"></i>&nbsp;Supprimer
+          </a>
+        </div>
+      </div>
+    {% else %}
+      <p>Il n'y a aucun produit à afficher</p>
+    {% endfor %}
+  </div>
 </div>
 {% endblock %}

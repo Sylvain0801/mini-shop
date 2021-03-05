@@ -3,7 +3,7 @@
 {% block title %}Espace administrateur - La boutique design{% endblock %}
 
 {% block body %}
-<header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner" style="max-height:60vh; background-image: url('../..//assets/images/main-bg-products.jpg')" data-stellar-background-ratio="0.5">
+<header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner" style="max-height:35vh; background-image: url('../..//assets/images/main-bg-products.jpg')" data-stellar-background-ratio="0.5">
   <div class="overlay"></div>
   <div class="container container-small">
     <div class="row">
@@ -18,36 +18,44 @@
     <i class="icon-back"></i>&nbsp;RETOUR LISTE
   </a>
   <div class="row" style="clear:both; display:flex; justify-content:center;">
-    <div class="col-xs-12 col-sm-8 col-md-6 form-container">
+    <div class="col-xs-12 col-md-10 form-container">
       <h2 class="text-center" style="color:white;margin-top: 1rem">Ajouter un nouveau produit</h2>
       <div class="form-goup">
         {{ form_start(productForm) }}
-        <div class="form-group">
-          {{ form_row(productForm.name) }}
-        </div>
-        <div class="form-group">
-          {{ form_label(productForm.category) }}
-          {{ form_widget(productForm.category) }}
-        </div>
-        <div class="form-group">
-          {{ form_row(productForm.description) }}
-        </div>
-        <div class="form-group">
-          {{ form_label(productForm.price) }}
-          {{ form_widget(productForm.price) }}
-        </div>
-        <div class="form-group">
-          {{ form_label(productForm.imageFile) }}
-          {{ form_widget(productForm.imageFile) }}
-        </div>
-        <div style="display: flex; justify-content: space-between;">
-          <div class="form-group" style="display:flex">
-            {{ form_widget(productForm.firstpage) }}
-            {{ form_label(productForm.firstpage) }}
+        <div class="row">
+          <div class="form-group col-xs-12 col-sm-8">
+            {{ form_row(productForm.name) }}
           </div>
-          <div class="form-group" style="display:flex">
-            {{ form_widget(productForm.active) }}
-            {{ form_label(productForm.active) }}
+          <div class="form-group col-xs-12 col-sm-4">
+            {{ form_label(productForm.category) }}
+            {{ form_widget(productForm.category) }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-xs-12 col-sm-8">
+            {{ form_row(productForm.description) }}
+          </div>
+          <div class="col-xs-12 col-sm-4">
+            <div class="form-group">
+              {{ form_label(productForm.price) }}
+              {{ form_widget(productForm.price) }}
+            </div>
+            <div class="form-group">
+              {{ form_label(productForm.imageFile) }}
+              <div style="display:flex">
+                {{ form_widget(productForm.imageFile) }}
+              </div>
+            </div>
+            <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+              <div class="form-group" style="display:flex">
+                {{ form_widget(productForm.firstpage) }}
+                {{ form_label(productForm.firstpage) }}
+              </div>
+              <div class="form-group" style="display:flex">
+                {{ form_widget(productForm.active) }}
+                {{ form_label(productForm.active) }}
+              </div>
+            </div>
           </div>
         </div>
         <div class="form-group" style="display: flex; justify-content: space-between;">
