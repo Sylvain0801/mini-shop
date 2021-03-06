@@ -12,7 +12,7 @@
 					<ul>
 						<li><a href="{{ path('home') }}">Accueil</a></li>
 						<li class="has-dropdown">
-							<a href="products.html">Nos produits</a>
+							<a href="{{ path('product_list') }}">Nos produits</a>
 							<ul class="dropdown">
 								{{ render(controller('App\\Controller\\CategoryController::categoryList')) }}
 							</ul>

@@ -19,4 +19,13 @@ class ProductController extends AbstractController
             )
         ]);
     }
+
+    #[Route('/category/{name}/{id}', name: 'category')]
+    public function productsByCategory($id, $name, ProductRepository $productRepository): Response
+    {
+        return $this->render('product/categoryfield.html.twig', [
+            'products' => $productRepository->findBy(['category' => $id]),
+            'category' => $name
+        ]);
+    }
 }
