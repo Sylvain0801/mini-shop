@@ -1,7 +1,7 @@
 {% extends "base.html.twig" %}
 {% block title 'Accueil - La Boutique Design' %}
 {% block body %}
-<header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner" style="background-image:url(assets/images/main-bg-2.jpg)" data-stellar-background-ratio="0.5">
+<header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner" style="background-image:url(../assets/images/main-bg-products-2.jpg)" data-stellar-background-ratio="0.5">
   <div class="overlay"></div>
   <div class="container">
     <div class="row">
@@ -10,7 +10,7 @@
           <div class="display-tc js-fullheight animate-box" data-animate-effect="fadeIn">
             <h1>Découvrez tous nos produits design</h1>
             <h2>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</h2>
-            <a href="#fh5co-featured-menu" class="btn-danger btn-lg" style="max-width:300px">LES OFFRES DU MOMENT</a>
+            <a href="#all-products" class="btn-danger btn-lg" style="max-width:300px">VOIR TOUS NOS PRODUITS</a>
           </div>
         </div>
       </div>
@@ -18,9 +18,9 @@
   </div>
 </header>
 <div id="fh5co-featured-menu" class="fh5co-section" style="padding:0">
-  <div class="container" style="margin-top: 6em" id="best-sellers">
+  <div class="container" style="margin-top: 6rem" id="all-products">
     <div class="text-center">
-      <h2 style="color:white; font-size:45px; font-weight: 600;">Les meilleures ventes du moment</h2>
+      <h2 style="color:white; font-size:45px; font-weight: 600;">Tous nos produits design</h2>
     </div>
   </div>
   <div class="products-container">
@@ -43,13 +43,6 @@
     {% else %}
       <p>Il n'y a aucun produit à afficher</p>
     {% endfor %}
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 text-center">
-        <a href="{{ path('product_list') }}" class="btn-danger btn-lg" style="max-width:300px">VOIR TOUS NOS PRODUITS</a>
-      </div>
-    </div>
   </div>
 </div>
 {% endblock %}

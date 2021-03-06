@@ -38,15 +38,18 @@ class ProductType extends AbstractType
                 'label' => 'Prix de vente'
             ])
             ->add('imageFile', FileType::class, [
-                'label' => 'Image du produit'
+                'label' => 'Image du produit',
+                'required' => false
             ])
             ->add('firstpage', CheckboxType::class, [
                 'attr' => ['class' => 'form-control'],
-                'label' => 'Première page'
+                'label' => 'Première page',
+                'required' => false
             ])
             ->add('active', CheckboxType::class, [
                 'attr' => ['class' => 'form-control'],
-                'label' => 'Activé'
+                'label' => 'Activé',
+                'required' => false
             ])
         ;
     }

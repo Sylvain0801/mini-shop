@@ -2,43 +2,21 @@
 
 namespace App\Controller;
 
-use App\Entity\Product;
-use App\Form\ProductType;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('admin/product', name: 'admin_product_')]
+#[Route('/product', name: 'product_')]
 class ProductController extends AbstractController
 {
     #[Route('/list', name: 'list')]
     public function index(ProductRepository $productRepository): Response
     {
-        return $this->render('admin/product/index.html.twig', [
-            'products' => $productRepository->findAll()
+        return $this->render('product/index.html.twig', [
+            'products' => $productRepository->findBy(
+                ['active' => true]
+            )
         ]);
-    }
-
-    #[Route('/new', name: 'new')]
-    public function newProduct(Request $request): Response
-    {
-        $product = new Product();
-        $product->setCreatedBy($this->getUser());
-        $form = $this->createForm(ProductType::class, $product);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($product);
-            $em->flush();
-
-            $this->addFlash('new_product', 'Le produit a été créé avec succès');
-            return $this->redirectToRoute('admin_product_list');
-        }
-        return $this->render('admin/product/new.html.twig', [
-            'productForm' => $form->createView()
-            ]);
     }
 }
