@@ -102,13 +102,13 @@
 
 table {
   background-color: #444;
-  color: #fff;
+  color: white;
 }
 
 caption {
   padding-top: 8px;
   padding-bottom: 8px;
-  color: #fff;
+  color: white;
   text-align: left;
 }
 
@@ -2593,9 +2593,10 @@ input[type="checkbox"]:checked:before {
   transition: transform .1s ease-in-out, -webkit-transform .1s ease-in-out;
   display: -ms-grid;
   display: grid;
-  -ms-grid-rows: 200px 50px 30px 93px 37px (22px)[4] 1fr;
+  -ms-grid-rows: 200px 50px 30px 93px 37px 22px 22px 22px 22px 1fr;
+      grid-template-rows: 200px 50px 30px 93px 37px 22px 22px 22px 22px 1fr;
   -ms-grid-columns: 1fr 1fr;
-      grid-template: 200px 50px 30px 93px 37px repeat(4, 22px) 1fr/1fr 1fr;
+      grid-template-columns: 1fr 1fr;
 }
 
 .card-admin img {
@@ -2826,6 +2827,7 @@ input[type="checkbox"]:checked:before {
 .card-homepage {
   width: 300px;
   height: 500px;
+  position: relative;
   margin: 2rem 0;
   border: 1px solid;
   border-radius: 10px;
@@ -2838,9 +2840,10 @@ input[type="checkbox"]:checked:before {
   transition: transform .1s ease-in-out, -webkit-transform .1s ease-in-out;
   display: -ms-grid;
   display: grid;
-  -ms-grid-rows: 200px 50px 40px 160px 50px;
   -ms-grid-columns: 1fr 1fr;
-      grid-template: 200px 50px 40px 160px 50px / 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: 200px 50px 40px 160px 50px;
+      grid-template-rows: 200px 50px 40px 160px 50px;
 }
 
 .card-homepage img {
@@ -2918,5 +2921,13 @@ input[type="checkbox"]:checked:before {
   margin: 0 1rem;
   font-size: 30px;
   line-height: 1;
+}
+
+.card-homepage div.card-favourite {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  color: yellow;
+  font-size: 22px;
 }
 /*# sourceMappingURL=style.css.map */

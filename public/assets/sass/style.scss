@@ -1877,7 +1877,8 @@ input[type="checkbox"]:checked {
 	overflow: hidden;
 	transition: transform .1s ease-in-out;
 	display: grid;
-	grid-template: 200px 50px 30px 93px 37px repeat(4, 22px) 1fr / 1fr 1fr;
+	grid-template-rows : 200px 50px 30px 93px 37px 22px 22px 22px 22px 1fr;
+	grid-template-columns: 1fr 1fr;
 	
 	& img {
 		width: 300px;
@@ -2029,6 +2030,7 @@ input[type="checkbox"]:checked {
 .card-homepage {
 	width: 300px;
 	height: 500px;
+	position: relative;
 	margin: 2rem 0;
 	border: 1px solid;
 	border-radius: 10px;
@@ -2036,7 +2038,8 @@ input[type="checkbox"]:checked {
 	overflow: hidden;
 	transition: transform .1s ease-in-out;
 	display: grid;
-	grid-template: 200px 50px 40px 160px 50px / 1fr 1fr;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 200px 50px 40px 160px 50px;
 	
 	& img {
 		width: 300px;
@@ -2079,5 +2082,12 @@ input[type="checkbox"]:checked {
     	font-size: 30px;
 			line-height: 1;
 		}
+	}
+	& div.card-favourite {
+		position:absolute;
+		right: 5px;
+		top: 5px;
+		color: yellow;
+		font-size: 22px;
 	}
 }

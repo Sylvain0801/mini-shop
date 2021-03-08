@@ -48,9 +48,15 @@ class User implements UserInterface
      */
     private $products;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Product::class, inversedBy="users")
+     */
+    private $favourites;
+
     public function __construct()
     {
         $this->products = new ArrayCollection();
+        $this->favourites = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -172,6 +178,30 @@ class User implements UserInterface
                 $product->setCreatedBy(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Product[]
+     */
+    public function getFavourites(): Collection
+    {
+        return $this->favourites;
+    }
+
+    public function addFavourite(Product $favourite): self
+    {
+        if (!$this->favourites->contains($favourite)) {
+            $this->favourites[] = $favourite;
+        }
+
+        return $this;
+    }
+
+    public function removeFavourite(Product $favourite): self
+    {
+        $this->favourites->removeElement($favourite);
 
         return $this;
     }
