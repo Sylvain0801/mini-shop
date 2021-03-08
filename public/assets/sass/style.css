@@ -2925,9 +2925,13 @@ input[type="checkbox"]:checked:before {
 
 .card-homepage div.card-favourite {
   position: absolute;
-  right: 5px;
+  right: 8px;
   top: 5px;
+  font-size: 24px;
+}
+
+.card-homepage div.card-favourite > i {
   color: yellow;
-  font-size: 22px;
+  cursor: pointer;
 }
 /*# sourceMappingURL=style.css.map */

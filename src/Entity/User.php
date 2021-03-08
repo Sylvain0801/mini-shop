@@ -49,14 +49,16 @@ class User implements UserInterface
     private $products;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Product::class, inversedBy="users")
+     * @ORM\ManyToMany(targetEntity=Product::class, mappedBy="favourites")
      */
-    private $favourites;
+    private $myproducts;
 
+    
     public function __construct()
     {
         $this->products = new ArrayCollection();
         $this->favourites = new ArrayCollection();
+        $this->myproducts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -185,23 +187,26 @@ class User implements UserInterface
     /**
      * @return Collection|Product[]
      */
-    public function getFavourites(): Collection
+    public function getMyproducts(): Collection
     {
-        return $this->favourites;
+        return $this->myproducts;
     }
 
-    public function addFavourite(Product $favourite): self
+    public function addMyproduct(Product $myproduct): self
     {
-        if (!$this->favourites->contains($favourite)) {
-            $this->favourites[] = $favourite;
+        if (!$this->myproducts->contains($myproduct)) {
+            $this->myproducts[] = $myproduct;
+            $myproduct->addFavourite($this);
         }
 
         return $this;
     }
 
-    public function removeFavourite(Product $favourite): self
+    public function removeMyproduct(Product $myproduct): self
     {
-        $this->favourites->removeElement($favourite);
+        if ($this->myproducts->removeElement($myproduct)) {
+            $myproduct->removeFavourite($this);
+        }
 
         return $this;
     }

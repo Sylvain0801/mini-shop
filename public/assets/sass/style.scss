@@ -2085,9 +2085,12 @@ input[type="checkbox"]:checked {
 	}
 	& div.card-favourite {
 		position:absolute;
-		right: 5px;
+		right: 8px;
 		top: 5px;
-		color: yellow;
-		font-size: 22px;
+		font-size: 24px;
+		& > i {
+			color: yellow;
+			cursor:pointer;
+		} 
 	}
 }

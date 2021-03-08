@@ -2,8 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Product;
+use App\Entity\User;
 use App\Repository\ProductRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -15,8 +19,18 @@ class ProductController extends AbstractController
     {
         return $this->render('product/index.html.twig', [
             'products' => $productRepository->findBy(
-                ['active' => true]
-            )
+                ['active' => true]),
+                'title' => 'Tous nos produits design'
+        ]);
+    }
+
+    #[Route('/favourite', name: 'favourite')]
+    public function favouriteList(): Response
+    {
+        $favouritelist = $this->getUser()->getMyproducts();
+        return $this->render('product/index.html.twig', [
+            'products' => $favouritelist,
+            'title' => 'Mes produits favoris'
         ]);
     }
 
@@ -27,5 +41,29 @@ class ProductController extends AbstractController
             'products' => $productRepository->findBy(['category' => $id]),
             'category' => $name
         ]);
+    }
+
+    #[Route('/favourite/add/{id}', name: 'favourite_add')]
+    public function addFavourites(Product $product): Response
+    {
+        $product->addFavourite($this->getUser());
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($product);
+        $em->flush();
+
+        return new Response('true');
+    }
+
+    #[Route('/favourite/remove/{id}', name: 'favourite_remove')]
+    public function removeFavourites(Product $product): Response
+    {
+        $product->removeFavourite($this->getUser());
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($product);
+        $em->flush();
+
+        return new Response('true');
     }
 }

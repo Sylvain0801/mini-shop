@@ -1,31 +1,42 @@
 {% extends "base.html.twig" %}
 {% block title 'Nos produits - La Boutique Design' %}
 {% block body %}
-<header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner" style="background-image:url(../../assets/images/main-bg-products-2.jpg)" data-stellar-background-ratio="0.5">
+<header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner" style="max-height: 50vh; background-image:url(../../../assets/images/main-bg-products-2.jpg)" data-stellar-background-ratio="0.5">
   <div class="overlay"></div>
-  <div class="container">
+  <div class="container container-small">
     <div class="row">
-      <div class="col-md-12 text-center">
-        <div class="display-t js-fullheight">
-          <div class="display-tc js-fullheight animate-box" data-animate-effect="fadeIn">
-            <h1>Découvrez tous nos produits design</h1>
-            <h2>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</h2>
-            <a href="#all-products" class="btn-danger btn-lg" style="max-width:300px">VOIR TOUS NOS PRODUITS</a>
-          </div>
-        </div>
+      <div class="col-md-12 text-center display-tc">
+        <h2>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</h2>
+        <a href="{{ path('product_list') }}" class="btn-danger btn-lg" style="max-width:300px">VOIR TOUS NOS PRODUITS</a>
+        {% if is_granted('ROLE_USER') %}
+          <a href="{{ path('product_favourite') }}" class="btn-danger btn-lg" style="max-width:300px">VOIR MES FAVORIS</a>
+        {% endif %}
       </div>
     </div>
   </div>
 </header>
 <div id="fh5co-featured-menu" class="fh5co-section" style="padding:0">
-  <div class="container" style="margin-top: 6rem" id="all-products">
+  <div class="container" style="margin-top: 6rem">
     <div class="text-center">
-      <h2 style="color:white; font-size:45px; font-weight: 600;">Tous nos produits design</h2>
+      <h2 style="color:white; font-size:45px; font-weight: 600;">{{ title }}</h2>
     </div>
   </div>
   <div class="products-container">
     {% for product in products %}
       <div class="card-homepage">
+        {% if is_granted('ROLE_USER') %}
+          <div class="card-favourite">
+          {% for favourite in product.favourites %}
+            {% if favourite.id == app.user.id %}
+              <i class="icon-star-full" data-id="{{ product.id }}"></i>
+            {% else %}
+              <i class="icon-star-empty" data-id="{{ product.id }}"></i>
+            {% endif %}
+          {% else %}
+            <i class="icon-star-empty" data-id="{{ product.id }}"></i>
+          {% endfor %}
+          </div>
+        {% endif %}
         <img src="{{ vich_uploader_asset(product, 'imageFile') }}" alt="{{ product.name }}">
         <div class="card-title">
           <h4>{{ product.name }}</h4>
@@ -39,13 +50,11 @@
         <div class="card-price">
           <h4>{{ product.price|number_format(2, ',', ' ') }} €</h4>
         </div>
-        <div class="card-favourite">
-          <i class="icon-star-full"></i>
-        </div>
       </div>
     {% else %}
       <p>Il n'y a aucun produit à afficher</p>
     {% endfor %}
   </div>
 </div>
+<script src="{{ asset('assets/js/favouritebuttons.js') }}"></script>
 {% endblock %}

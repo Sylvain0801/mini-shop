@@ -96,13 +96,15 @@ class Product
     private $updated_at;
 
     /**
-     * @ORM\ManyToMany(targetEntity=User::class, mappedBy="favourites")
+     * @ORM\ManyToMany(targetEntity=User::class, inversedBy="myproducts")
      */
-    private $users;
+    private $favourites;
+
 
     public function __construct()
     {
         $this->users = new ArrayCollection();
+        $this->favourites = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -237,37 +239,28 @@ class Product
         return $this->updated_at;
     }
 
-    // public function setUpdatedAt(\DateTimeInterface $updated_at): self
-    // {
-    //     $this->updated_at = $updated_at;
-
-    //     return $this;
-    // }
-
     /**
      * @return Collection|User[]
      */
-    public function getUsers(): Collection
+    public function getFavourites(): Collection
     {
-        return $this->users;
+        return $this->favourites;
     }
 
-    public function addUser(User $user): self
+    public function addFavourite(User $favourite): self
     {
-        if (!$this->users->contains($user)) {
-            $this->users[] = $user;
-            $user->addFavourite($this);
+        if (!$this->favourites->contains($favourite)) {
+            $this->favourites[] = $favourite;
         }
 
         return $this;
     }
 
-    public function removeUser(User $user): self
+    public function removeFavourite(User $favourite): self
     {
-        if ($this->users->removeElement($user)) {
-            $user->removeFavourite($this);
-        }
+        $this->favourites->removeElement($favourite);
 
         return $this;
     }
+
 }
