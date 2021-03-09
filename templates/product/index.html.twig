@@ -24,15 +24,12 @@
   <div class="products-container">
     {% for product in products %}
     <div class="card-homepage">
-        {% if is_granted('ROLE_USER') %}
-        <div class="card-favourite">
-          
+        {% if is_granted('ROLE_USER') %}          
           {% for favourite in product.favourites %}
-            <input type="checkbox" class="star-favourite" {{ (favourite.id == app.user.id) ? 'checked' : '' }} data-id="{{ product.id }}">
+            <input type="checkbox" class="star-favourite" {{ (favourite.id == app.user.id) ? ("checked title='Supprimer ce produit de vos favoris'") : ("title='Ajouter ce produit à vos favoris'") }} data-id="{{ product.id }}">
           {% else %}
-            <input type="checkbox" class="star-favourite" data-id="{{ product.id }}">
+            <input type="checkbox" class="star-favourite" title="Ajouter ce produit à vos favoris" data-id="{{ product.id }}">
           {% endfor %}
-        </div>
         {% endif %}
         <img src="{{ vich_uploader_asset(product, 'imageFile') }}" alt="{{ product.name }}">
         <div class="card-title">

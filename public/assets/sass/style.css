@@ -2923,27 +2923,17 @@ input[type="checkbox"]:checked:before {
   line-height: 1;
 }
 
-.card-homepage div.card-favourite {
-  position: absolute;
-  right: 8px;
-  top: 5px;
-}
-
-.card-homepage div.card-favourite > input {
-  position: absolute;
-  border: none;
-  width: 0;
-  height: 0;
-  margin: 0;
-}
-
-.card-homepage div.card-favourite > input:checked {
+.card-homepage input.star-favourite {
   position: absolute;
   right: 0;
   top: 0;
+  width: 0;
+  height: 0;
+  margin: 0;
+  border: none;
 }
 
-.card-homepage div.card-favourite .star-favourite:before {
+.card-homepage input.star-favourite:before {
   font-family: 'icomoon';
   speak: none;
   font-style: normal;
@@ -2954,16 +2944,16 @@ input[type="checkbox"]:checked:before {
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  content: "\eb95";
+  position: absolute;
   right: 8px;
   top: 5px;
-  content: "\eb95";
   color: yellow;
-  cursor: pointer;
-  position: absolute;
   font-size: 24px;
+  cursor: pointer;
 }
 
-.card-homepage div.card-favourite > input:checked:before {
+.card-homepage input.star-favourite:checked:before {
   content: "\eb97";
 }
 /*# sourceMappingURL=style.css.map */

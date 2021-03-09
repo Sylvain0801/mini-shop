@@ -2083,34 +2083,31 @@ input[type="checkbox"]:checked {
 			line-height: 1;
 		}
 	}
-	& div.card-favourite {
+	& input.star-favourite {
 		position:absolute;
+		right: 0;
+		top: 0;
+		width: 0;
+		height: 0;
+		margin: 0;
+		border: none;
+		}
+	// & input.star-favourite:checked {
+	// 	position: absolute;
+	// 	right: 0;
+	// 	top: 0;
+	// }
+	& input.star-favourite:before {
+		@include icomoon;
+		content: "\eb95";
+		position: absolute;
 		right: 8px;
 		top: 5px;
-		& > input {
-			position:absolute;
-			border: none;
-			width: 0;
-			height: 0;
-			margin: 0;
-			}
-		& >input:checked {
-			position: absolute;
-    	right: 0;
-    	top: 0;
-		}
-		& .star-favourite:before {
-			@include icomoon;
-			right: 8px;
-			top: 5px;
-			content: "\eb95";
-			color: yellow;
-			cursor:pointer;
-			position: absolute;
-			font-size: 24px;
-		}
-		& >input:checked:before {
-			content: "\eb97";
-		}
+		color: yellow;
+		font-size: 24px;
+		cursor:pointer;
+	}
+	& input.star-favourite:checked:before {
+		content: "\eb97";
 	}
 }

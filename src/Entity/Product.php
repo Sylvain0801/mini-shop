@@ -14,6 +14,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 /**
  * @ORM\Entity(repositoryClass=ProductRepository::class)
  * @Vich\Uploadable
+ * @ORM\Table(name="product", indexes={@ORM\Index(columns={"name", "description"}, flags={"fulltext"})})
  */
 class Product
 {

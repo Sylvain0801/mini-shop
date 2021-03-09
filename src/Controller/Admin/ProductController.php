@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Product;
+use App\Form\ProductSearchType;
 use App\Form\ProductType;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -15,10 +16,21 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProductController extends AbstractController
 {
     #[Route('/list', name: 'list')]
-    public function index(ProductRepository $productRepository): Response
+    public function index(ProductRepository $productRepository, Request $request): Response
     {   
+        $product = $productRepository->findAll();
+        $form = $this->createForm(ProductSearchType::class);
+        $search = $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $product = $productRepository->searchProductByWords(
+                $search->get('words')->getData(),
+                $search->get('category')->getData());
+        }
+
         return $this->render('admin/product/index.html.twig', [
-            'products' => $productRepository->findAll()
+            'products' => $product,
+            'formSearch' => $form->createView()
         ]);
     }
 

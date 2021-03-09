@@ -21,11 +21,15 @@
     {% endfor %}
   </div>
 </div>
-<div style="display:flex; justify-content: space-between; flex-wrap: wrap; margin:0 3rem;">
+<div style="display:flex; justify-content: space-between; align-items:baseline; flex-wrap: wrap; margin:0 3rem;">
+  {{ form_start(formSearch) }}
+  {{ form_widget(formSearch.category) }}
   <div class="input-group" style="display:flex; width:300px; margin-bottom: 1rem">
-    <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
-    <button class="btn-success btn-lg" type="button" id="button-addon2"style="border-bottom-left-radius: 0;border-top-left-radius: 0;"><i class="icon-magnifying-glass"></i></button>
+    {{ form_widget(formSearch.words) }}
+    <button class="btn-success btn-lg" type="submit" style="border-bottom-left-radius: 0;border-top-left-radius: 0;"><i class="icon-magnifying-glass"></i></button>
   </div>
+  {{ form_end(formSearch) }}
+  <a href="{{ path('admin_product_list') }}" class="btn-success btn-lg" role="button" style="float:right; line-height: unset; margin-bottom: 1rem">AFFICHER TOUT</a>
   <a href="{{ path('admin_product_new') }}" class="btn-success btn-lg" role="button" style="float:right; line-height: unset; margin-bottom: 1rem">
     <i class="icon-plus"></i>&nbsp;CREER UN PRODUIT
   </a>
