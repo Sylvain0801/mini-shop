@@ -23,19 +23,16 @@
   </div>
   <div class="products-container">
     {% for product in products %}
-      <div class="card-homepage">
+    <div class="card-homepage">
         {% if is_granted('ROLE_USER') %}
-          <div class="card-favourite">
+        <div class="card-favourite">
+          
           {% for favourite in product.favourites %}
-            {% if favourite.id == app.user.id %}
-              <i class="icon-star-full" data-id="{{ product.id }}"></i>
-            {% else %}
-              <i class="icon-star-empty" data-id="{{ product.id }}"></i>
-            {% endif %}
+            <input type="checkbox" class="star-favourite" {{ (favourite.id == app.user.id) ? 'checked' : '' }} data-id="{{ product.id }}">
           {% else %}
-            <i class="icon-star-empty" data-id="{{ product.id }}"></i>
+            <input type="checkbox" class="star-favourite" data-id="{{ product.id }}">
           {% endfor %}
-          </div>
+        </div>
         {% endif %}
         <img src="{{ vich_uploader_asset(product, 'imageFile') }}" alt="{{ product.name }}">
         <div class="card-title">

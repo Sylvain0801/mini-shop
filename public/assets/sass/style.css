@@ -2927,11 +2927,43 @@ input[type="checkbox"]:checked:before {
   position: absolute;
   right: 8px;
   top: 5px;
+}
+
+.card-homepage div.card-favourite > input {
+  position: absolute;
+  border: none;
+  width: 0;
+  height: 0;
+  margin: 0;
+}
+
+.card-homepage div.card-favourite > input:checked {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.card-homepage div.card-favourite .star-favourite:before {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  right: 8px;
+  top: 5px;
+  content: "\eb95";
+  color: yellow;
+  cursor: pointer;
+  position: absolute;
   font-size: 24px;
 }
 
-.card-homepage div.card-favourite > i {
-  color: yellow;
-  cursor: pointer;
+.card-homepage div.card-favourite > input:checked:before {
+  content: "\eb97";
 }
 /*# sourceMappingURL=style.css.map */

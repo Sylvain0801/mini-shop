@@ -3,11 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Product;
-use App\Entity\User;
 use App\Repository\ProductRepository;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -63,7 +60,7 @@ class ProductController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $em->persist($product);
         $em->flush();
-
+        
         return new Response('true');
     }
 }

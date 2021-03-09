@@ -2087,10 +2087,30 @@ input[type="checkbox"]:checked {
 		position:absolute;
 		right: 8px;
 		top: 5px;
-		font-size: 24px;
-		& > i {
+		& > input {
+			position:absolute;
+			border: none;
+			width: 0;
+			height: 0;
+			margin: 0;
+			}
+		& >input:checked {
+			position: absolute;
+    	right: 0;
+    	top: 0;
+		}
+		& .star-favourite:before {
+			@include icomoon;
+			right: 8px;
+			top: 5px;
+			content: "\eb95";
 			color: yellow;
 			cursor:pointer;
-		} 
+			position: absolute;
+			font-size: 24px;
+		}
+		& >input:checked:before {
+			content: "\eb97";
+		}
 	}
 }
