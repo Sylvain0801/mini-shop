@@ -17,7 +17,7 @@
 								{{ render(controller('App\\Controller\\CategoryController::categoryList')) }}
 							</ul>
 						</li>
-						<li><a href="about.html">À propos</a></li>
+						<li><a href="{{ path('about') }}">À propos</a></li>
 						<li><a href="{{ path('contact') }}">Contact</a></li>
 						<li class="has-dropdown">
 							<a href="{{ path('user') }}">Mon espace</a>
