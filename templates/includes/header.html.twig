@@ -36,7 +36,7 @@
 </nav>
 {% if app.user %}
 	<div class="connected">
-		<h5><i class="icon-user"></i>&nbsp;{{ app.user.username }}</h5>
+		<h5><i class="icon-user"></i>&nbsp;{{ app.user.name }}</h5>
 		<a href="{{ path('app_logout') }}">Se déconnecter</i></a>
 	</div>
 {% endif %}

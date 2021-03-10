@@ -15,6 +15,7 @@
           <div class="alert alert-danger" role="alert">{{ flashError }}</div>
         {% endfor %}
         {{ form_start(registrationForm) }}
+            {{ form_row(registrationForm.name) }}
             {{ form_row(registrationForm.email) }}
             {{ form_row(registrationForm.plainPassword) }}
             <div class="form-group">

@@ -23,6 +23,9 @@
       <div class="form-goup">
         {{ form_start(userEditForm) }}
         <div class="form-group">
+          {{ form_row(userEditForm.name) }}
+        </div>
+        <div class="form-group">
           {{ form_row(userEditForm.email) }}
         </div>
         <div class="form-group">

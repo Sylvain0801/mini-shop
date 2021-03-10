@@ -39,7 +39,7 @@ class AdminController extends AbstractController
             $em->persist($user);
             $em->flush();
 
-            $this->addFlash('modified_user', 'L\'utilisateur a été modifié avec succès');
+            $this->addFlash('message_user_admin', 'L\'utilisateur a été modifié avec succès');
             return $this->redirectToRoute('admin_user_list');
         }
         return $this->render('admin/user/edituser.html.twig', [
@@ -54,7 +54,7 @@ class AdminController extends AbstractController
         $em->remove($user);
         $em->flush();
         
-        $this->addFlash('delete_user', 'L\'utilisateur a été supprimé avec succès');
+        $this->addFlash('message_user_admin', 'L\'utilisateur a été supprimé avec succès');
 
     return $this->redirectToRoute('admin_user_list');
     }

@@ -16,10 +16,7 @@
 <div class="container" style="margin-top: 1rem">
   <div class="text-center">
     <h2 style="color:white;">Gestion de vos comptes utilisateurs</h2>
-    {% for message in app.flashes('modified_user') %}
-      <div class="alert alert-success" role="alert">{{ message }}</div>
-    {% endfor %}
-    {% for message in app.flashes('delete_user') %}
+    {% for message in app.flashes('message_user_admin') %}
       <div class="alert alert-success" role="alert">{{ message }}</div>
     {% endfor %}
   </div>
@@ -27,32 +24,36 @@
     <thead>
       <tr>
         <th scope="col">Id</th>
+        <th scope="col">Nom</th>
         <th scope="col">Email</th>
-        <th scope="col">Role</th>
+        <th scope="col">Rôles</th>
         <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
       {% for user in users %}
-      <tr style="vertical-align: center;">
-        <td>{{ user.id }}</td>
-        <td>{{ user.email }}</td>
-        <td>
-          {% if user.roles|length == 1 %}
-            utilisateur
-          {% elseif user.roles|length == 2 %}
-            administrateur 
-          {% endif %}
-        </td>
-        <td>
-          <a href="{{ path('admin_user_edit', {'id':user.id}) }}" class="btn-warning btn-lg" role="button" style="padding:6px 3px 3px 4px; font-size:20px; line-height: 1; margin: 0 1rem">
-            <i class="icon-pencil"></i>
-          </a>
-          <a href="{{ path('admin_user_delete', {'id':user.id}) }}" class="btn-danger btn-lg" role="button" style="padding:5px; font-size:20px; line-height: 1; margin: 0 1rem" onclick="return confirm('L\'utilisateur {{ user.email }} va être définitivement supprimé, ce choix doit être confirmé ?')">
-            <i class="icon-trash"></i>
-          </a>
-        </td>
-      </tr>
+        {% if user.id != app.user.id %}
+        <tr style="vertical-align: center;">
+          <td>{{ user.id }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.email }}</td>
+          <td>
+            {% if user.roles|length == 1 %}
+              utilisateur
+            {% elseif user.roles|length == 2 %}
+              administrateur 
+            {% endif %}
+          </td>
+          <td>
+            <a href="{{ path('admin_user_edit', {'id':user.id}) }}" class="btn-warning btn-lg" role="button" style="padding:6px 3px 3px 4px; font-size:20px; line-height: 1; margin: 0 1rem">
+              <i class="icon-pencil"></i>
+            </a>
+            <a href="{{ path('admin_user_delete', {'id':user.id}) }}" class="btn-danger btn-lg" role="button" style="padding:5px; font-size:20px; line-height: 1; margin: 0 1rem" onclick="return confirm('L\'utilisateur {{ user.email }} va être définitivement supprimé, ce choix doit être confirmé ?')">
+              <i class="icon-trash"></i>
+            </a>
+          </td>
+        </tr>
+        {% endif %}
       {% endfor %}
     </tbody>
   </table>
