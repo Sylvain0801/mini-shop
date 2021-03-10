@@ -19,7 +19,8 @@ class CategoryController extends AbstractController
     public function categoryList(CategoryRepository $categoryRepository): Response
     {
         return $this->render('includes/_categories.html.twig', [
-            'categories' => $categoryRepository->findAll()
+            'categories' => $categoryRepository->findAll(),
+            'active' => 'user'
         ]);
     }
 
@@ -27,7 +28,8 @@ class CategoryController extends AbstractController
     public function index(CategoryRepository $categoryRepository): Response
     {
         return $this->render('admin/category/index.html.twig', [
-            'categories' => $categoryRepository->findAll()
+            'categories' => $categoryRepository->findAll(),
+            'active' => 'user'
         ]);
     }
 
@@ -47,7 +49,8 @@ class CategoryController extends AbstractController
             return $this->redirectToRoute('admin_category_list');
         }
         return $this->render('admin/category/new.html.twig', [
-            'categoryForm' => $form->createView()
+            'categoryForm' => $form->createView(),
+            'active' => 'user'
             ]);
     }
 
@@ -67,7 +70,8 @@ class CategoryController extends AbstractController
         }
         return $this->render('admin/category/edit.html.twig', [
             'categoryForm' => $form->createView(),
-            'category' => $category
+            'category' => $category,
+            'active' => 'user'
             ]);
     }
         

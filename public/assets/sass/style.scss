@@ -341,26 +341,26 @@ h1, h2, h3, h4, h5, h6, figure {
 						margin: 0 auto;
 					}
 				}
-			// &.active {
-			// 	> a {
-			// 		color: $brand-white;
-			// 		position: relative;
-			// 		.scrolled & {
-			// 			color: rgba(0, 0, 0, .7);
-			// 		}
-			// 		&:after{
-			// 			position: absolute;
-			// 			bottom: 25px;
-			// 			left: 0;
-			// 			right: 0;
-			// 			content: '';
-			// 			width: 30px;
-			// 			height: 2px;
-			// 			background: $brand-primary;
-			// 			margin: 0 auto;
-			// 		}
-			// 	}
-			// }
+			&.active {
+				> a {
+					color: $brand-white;
+					position: relative;
+					.scrolled & {
+						color: rgba(0, 0, 0, .7);
+					}
+					&:after{
+						position: absolute;
+						bottom: 25px;
+						left: 0;
+						right: 0;
+						content: '';
+						width: 40px;
+						height: 2px;
+						background: $brand-primary;
+						margin: 0 auto;
+					}
+				}
+			}
 		}
 	}
 }

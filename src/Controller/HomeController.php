@@ -22,8 +22,8 @@ class HomeController extends AbstractController
     return $this->render('index.html.twig', [
       'products' => $productRepository->findBy(
         ['firstpage' => true, 'active' => true],
-        ['price' => 'ASC']
-      )
+        ['price' => 'ASC']),
+      'active' => 'home'
   ]);
   }
 
@@ -33,7 +33,9 @@ class HomeController extends AbstractController
    */
   public function about():Response
   {
-    return $this->render('about/index.html.twig');
+    return $this->render('about/index.html.twig', [
+      'active' => 'about'
+    ]);
   }
 
   /**
@@ -66,7 +68,8 @@ class HomeController extends AbstractController
       }
 
       return $this->render('contact/index.html.twig', [
-          'formContact' => $form->createView()
+          'formContact' => $form->createView(),
+          'active' => 'contact'
       ]);
   }
 }

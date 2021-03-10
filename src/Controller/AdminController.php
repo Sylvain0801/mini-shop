@@ -17,14 +17,17 @@ class AdminController extends AbstractController
     #[Route('/', name: 'home')]
     public function index(): Response
     {
-        return $this->render('admin/index.html.twig');
+        return $this->render('admin/index.html.twig', [
+            'active' => 'user'
+        ]);
     }
 
     #[Route('/user/list', name: 'user_list')]
     public function usersList(UserRepository $userRepository): Response
     {
         return $this->render('admin/user/userslist.html.twig', [
-            'users' => $userRepository->findAll()
+            'users' => $userRepository->findAll(),
+            'active' => 'user'
         ]);
     }
 
@@ -43,7 +46,8 @@ class AdminController extends AbstractController
             return $this->redirectToRoute('admin_user_list');
         }
         return $this->render('admin/user/edituser.html.twig', [
-            'userEditForm' => $form->createView()
+            'userEditForm' => $form->createView(),
+            'active' => 'user'
             ]);
         }
         

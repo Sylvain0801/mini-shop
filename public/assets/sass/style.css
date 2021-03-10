@@ -781,6 +781,27 @@ h1, h2, h3, h4, h5, h6, figure {
   margin: 0 auto;
 }
 
+.fh5co-nav ul li.active > a {
+  color: #fff;
+  position: relative;
+}
+
+.scrolled .fh5co-nav ul li.active > a {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.fh5co-nav ul li.active > a:after {
+  position: absolute;
+  bottom: 25px;
+  left: 0;
+  right: 0;
+  content: '';
+  width: 40px;
+  height: 2px;
+  background: #ea272d;
+  margin: 0 auto;
+}
+
 #fh5co-counter,
 .fh5co-bg,
 #fh5co-gallery .fh5co-bg-img,

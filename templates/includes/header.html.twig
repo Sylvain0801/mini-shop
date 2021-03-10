@@ -10,16 +10,16 @@
 				</div>
 				<div class="col-xs-12 text-center menu-1 menu-wrap">
 					<ul>
-						<li><a href="{{ path('home') }}">Accueil</a></li>
-						<li class="has-dropdown">
+						<li class="{{ (active == 'home') ? 'active' : ''}}"><a href="{{ path('home') }}">Accueil</a></li>
+						<li class="{{ (active == 'product') ? 'active ' : ''}}has-dropdown">
 							<a href="{{ path('product_list') }}">Nos produits</a>
 							<ul class="dropdown">
 								{{ render(controller('App\\Controller\\CategoryController::categoryList')) }}
 							</ul>
 						</li>
-						<li><a href="{{ path('about') }}">À propos</a></li>
-						<li><a href="{{ path('contact') }}">Contact</a></li>
-						<li class="has-dropdown">
+						<li class="{{ (active == 'about') ? 'active' : ''}}"><a href="{{ path('about') }}">À propos</a></li>
+						<li class="{{ (active == 'contact') ? 'active' : ''}}"><a href="{{ path('contact') }}">Contact</a></li>
+						<li class="{{ (active == 'user') ? 'active ' : ''}}has-dropdown">
 							<a href="{{ path('user') }}">Mon espace</a>
 							<ul class="dropdown">
 								<li><a href="{{ path('app_login') }}">Se connecter</a></li>

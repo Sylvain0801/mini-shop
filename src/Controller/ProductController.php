@@ -17,7 +17,8 @@ class ProductController extends AbstractController
         return $this->render('product/index.html.twig', [
             'products' => $productRepository->findBy(
                 ['active' => true]),
-                'title' => 'Tous nos produits design'
+                'title' => 'Tous nos produits design',
+                'active' => 'product'
         ]);
     }
 
@@ -27,7 +28,8 @@ class ProductController extends AbstractController
         $favouritelist = $this->getUser()->getMyproducts();
         return $this->render('product/index.html.twig', [
             'products' => $favouritelist,
-            'title' => 'Mes produits favoris'
+            'title' => 'Mes produits favoris',
+            'active' => 'product'
         ]);
     }
 
@@ -36,7 +38,8 @@ class ProductController extends AbstractController
     {
         return $this->render('product/categoryfield.html.twig', [
             'products' => $productRepository->findBy(['category' => $id]),
-            'category' => $name
+            'category' => $name,
+            'active' => 'product'
         ]);
     }
 
