@@ -631,7 +631,8 @@ h1, h2, h3, h4, h5, h6, figure {
 .fh5co-nav #fh5co-logo {
   font-size: 32px;
   margin: 0;
-  padding: 0;
+  padding: 15px;
+  line-height: 1;
   font-weight: 700;
   font-family: "Cormorant Garamond", Georgia, serif;
   color: #fff !important;
@@ -800,6 +801,26 @@ h1, h2, h3, h4, h5, h6, figure {
   height: 2px;
   background: #ea272d;
   margin: 0 auto;
+}
+
+.main-bg-2 {
+  background-image: url(../images/main-bg-2.jpg);
+}
+
+.main-bg-users {
+  background-image: url(../images/main-bg-users.jpg);
+}
+
+.main-bg-admin {
+  background-image: url(../images/main-bg-admin.jpg);
+}
+
+.main-bg-products {
+  background-image: url(../images/main-bg-products.jpg);
+}
+
+.main-bg-products-2 {
+  background-image: url(../images/main-bg-products-2.jpg);
 }
 
 #fh5co-counter,

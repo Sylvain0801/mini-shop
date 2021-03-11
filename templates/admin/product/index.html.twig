@@ -3,7 +3,7 @@
 {% block title %}Espace administrateur - La boutique design{% endblock %}
 
 {% block body %}
-<header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner" style="max-height:60vh; background-image: url('../..//assets/images/main-bg-products.jpg')" data-stellar-background-ratio="0.5">
+<header id="fh5co-header" class="fh5co-cover js-fullheight main-bg-products" role="banner" style="max-height:60vh;" data-stellar-background-ratio="0.5">
   <div class="overlay"></div>
   <div class="container container-small">
     <div class="row">
@@ -37,7 +37,7 @@
 <div class="products-container">
   {% for product in products %}
     <div class="card-admin">
-      <img src="{{ vich_uploader_asset(product, 'imageFile') }}" alt="{{ product.name }}">
+      <img src="{{ asset('images/products/'~product.imageName) }}" alt="{{ product.name }}">
       <div class="card-title">
         <h4>{{ product.name }}</h4>
       </div>

@@ -1,7 +1,7 @@
 {% extends "base.html.twig" %}
 {% block title 'Accueil - La Boutique Design' %}
 {% block body %}
-<header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner" style="background-image:url(assets/images/main-bg-2.jpg)" data-stellar-background-ratio="0.5">
+<header id="fh5co-header" class="fh5co-cover js-fullheight main-bg-2" role="banner" data-stellar-background-ratio="0.5">
   <div class="overlay"></div>
   <div class="container">
     <div class="row">
@@ -26,7 +26,7 @@
   <div class="products-container">
     {% for product in products %}
       <div class="card-homepage">
-        <img src="{{ vich_uploader_asset(product, 'imageFile') }}" alt="{{ product.name }}">
+        <img src="{{ asset('images/products/'~product.imageName) }}" alt="{{ product.name }}">
         <div class="card-title">
           <h4>{{ product.name }}</h4>
         </div>

@@ -211,7 +211,8 @@ h1, h2, h3, h4, h5, h6, figure {
 	#fh5co-logo {
 		font-size: 32px;
 		margin: 0;
-		padding: 0;
+		padding: 15px;
+    line-height: 1;
 		// text-transform: uppercase;
 		font-weight: 700;
 		font-family: $font-primary;
@@ -363,6 +364,28 @@ h1, h2, h3, h4, h5, h6, figure {
 			}
 		}
 	}
+}
+
+// Gestion background ###########
+
+.main-bg-2 {
+	background-image: url(../images/main-bg-2.jpg);
+}
+
+.main-bg-users {
+	background-image: url(../images/main-bg-users.jpg);
+}
+
+.main-bg-admin {
+	background-image: url(../images/main-bg-admin.jpg);
+}
+
+.main-bg-products {
+	background-image: url(../images/main-bg-products.jpg);
+}
+
+.main-bg-products-2 {
+	background-image: url(../images/main-bg-products-2.jpg);
 }
 
 #fh5co-counter,
