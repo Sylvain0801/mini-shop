@@ -51,8 +51,9 @@ class HomeController extends AbstractController
 
       if($form->isSubmitted() && $form->isValid()) {
         $email = (new TemplatedEmail())
-          ->from($contact->get('email')->getData())
-          ->to(new Address('maildemo@la-boutique-design.site', 'LaBoutiqueDesign'))
+          ->from('maildemo@la-boutique-design.site')
+          ->to('maildemo@la-boutique-design.site')
+          ->addReplyTo($contact->get('email')->getData())
           ->subject('Demande d\'information')
           ->htmlTemplate('contact/email.html.twig')
           ->context([
