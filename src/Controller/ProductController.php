@@ -8,11 +8,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/product', name: 'product_')]
+/**
+* @Route("/product", name="product_")
+*/
 class ProductController extends AbstractController
 {
-    #[Route('/list', name: 'list')]
-    public function index(ProductRepository $productRepository): Response
+    /**
+    * @Route("/list", name="list")
+    * @return Response
+    */
+    public function index(ProductRepository $productRepository)
     {
         return $this->render('product/index.html.twig', [
             'products' => $productRepository->findBy(
@@ -22,7 +27,10 @@ class ProductController extends AbstractController
         ]);
     }
 
-    #[Route('/favourite', name: 'favourite')]
+    /**
+    * @Route("/favourite", name="favourite")
+    * @return Response
+    */
     public function favouriteList(): Response
     {
         $favouritelist = $this->getUser()->getMyproducts();
@@ -33,7 +41,10 @@ class ProductController extends AbstractController
         ]);
     }
 
-    #[Route('/category/{name}/{id}', name: 'category')]
+    /**
+    * @Route("/category/{name}/{id}", name="category")
+    * @return Response
+    */
     public function productsByCategory($id, $name, ProductRepository $productRepository): Response
     {
         return $this->render('product/categoryfield.html.twig', [
@@ -42,8 +53,11 @@ class ProductController extends AbstractController
             'active' => 'product'
         ]);
     }
-
-    #[Route('/favourite/add/{id}', name: 'favourite_add')]
+    
+    /**
+    * @Route("/favourite/add/{id}", name="favourite_add")
+    * @return Response
+    */
     public function addFavourites(Product $product): Response
     {
         $product->addFavourite($this->getUser());
@@ -54,8 +68,11 @@ class ProductController extends AbstractController
 
         return new Response('true');
     }
-
-    #[Route('/favourite/remove/{id}', name: 'favourite_remove')]
+    
+    /**
+    * @Route("/favourite/remove/{id}", name="favourite_remove")
+    * @return Response
+    */
     public function removeFavourites(Product $product): Response
     {
         $product->removeFavourite($this->getUser());

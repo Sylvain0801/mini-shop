@@ -2973,6 +2973,7 @@ input[type="checkbox"]:checked:before {
   height: 0;
   margin: 0;
   border: none;
+  cursor: pointer;
 }
 
 .card-homepage input.star-favourite:before {
@@ -2992,7 +2993,6 @@ input[type="checkbox"]:checked:before {
   top: 5px;
   color: yellow;
   font-size: 24px;
-  cursor: pointer;
 }
 
 .card-homepage input.star-favourite:checked:before {

@@ -8,6 +8,7 @@ use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mime\Address;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -51,7 +52,7 @@ class HomeController extends AbstractController
       if($form->isSubmitted() && $form->isValid()) {
         $email = (new TemplatedEmail())
           ->from($contact->get('email')->getData())
-          ->to('contact@demo.fr')
+          ->to(new Address('maildemo@la-boutique-design.site', 'LaBoutiqueDesign'))
           ->subject('Demande d\'information')
           ->htmlTemplate('contact/email.html.twig')
           ->context([

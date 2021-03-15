@@ -12,10 +12,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('admin/product', name: 'admin_product_')]
+/**
+ * @Route("admin/product", name="admin_product_")
+ */
 class ProductController extends AbstractController
 {
-    #[Route('/list', name: 'list')]
+    /**
+     * @Route("/list", name="list")
+     */
     public function index(ProductRepository $productRepository, Request $request): Response
     {   
         $product = $productRepository->findAll();
@@ -34,8 +38,10 @@ class ProductController extends AbstractController
             'active' => 'user'
         ]);
     }
-
-    #[Route('/new', name: 'new')]
+    
+    /**
+     * @Route("/new", name="new")
+     */
     public function newProduct(Request $request): Response
     {
         $product = new Product();
@@ -57,7 +63,9 @@ class ProductController extends AbstractController
             ]);
     }
 
-    #[Route('/edit/{slug}', name: 'edit')]
+    /**
+     * @Route("/edit/{slug}", name="edit")
+     */
     public function editProduct($slug, Request $request, ProductRepository $productRepository): Response
     {
 
@@ -79,8 +87,10 @@ class ProductController extends AbstractController
             'active' => 'user'
             ]);
     }
-
-    #[Route('/delete/{id}', name: 'delete')]
+    
+    /**
+     * @Route("/delete/{id}", name="delete")
+     */
     public function delete(Product $product): RedirectResponse
     {
         $em = $this->getDoctrine()->getManager();
@@ -92,8 +102,10 @@ class ProductController extends AbstractController
         return $this->redirectToRoute('admin_product_list');
     }
     
-    #[Route('/active/{id}', name: 'active')]
-    public function activer(Product $product)
+    /**
+     * @Route("/active/{id}", name="active")
+     */
+    public function activer(Product $product):Response
     {
         $product->setActive( $product->getActive() ? false : true );
 
@@ -104,9 +116,11 @@ class ProductController extends AbstractController
         return new Response("true");
 
     }
-
-    #[Route('/firstpage/{id}', name: 'firstpage')]
-    public function firstpage(Product $product)
+    
+    /**
+     * @Route("/firstpage/{id}", name="firstpage")
+     */
+    public function firstpage(Product $product):Response
     {
         $product->setFirstpage( $product->getFirstpage() ? false : true );
 

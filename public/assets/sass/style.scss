@@ -2114,6 +2114,7 @@ input[type="checkbox"]:checked {
 		height: 0;
 		margin: 0;
 		border: none;
+		cursor:pointer;
 		}
 	// & input.star-favourite:checked {
 	// 	position: absolute;
@@ -2128,7 +2129,6 @@ input[type="checkbox"]:checked {
 		top: 5px;
 		color: yellow;
 		font-size: 24px;
-		cursor:pointer;
 	}
 	& input.star-favourite:checked:before {
 		content: "\eb97";

@@ -24,8 +24,10 @@ class RegistrationController extends AbstractController
     {
         $this->emailVerifier = $emailVerifier;
     }
-
-    #[Route('/register', name: 'app_register')]
+    
+    /**
+    * @Route("/register", name="app_register")
+    */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, UserAuthenticator $authenticator): Response
     {
         $user = new User();
@@ -48,7 +50,7 @@ class RegistrationController extends AbstractController
             // generate a signed url and email it to the user
             $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
                 (new TemplatedEmail())
-                    ->from(new Address('no-reply@laboutiquedesign.com', 'LaBoutiqueDesign.com'))
+                    ->from(new Address('maildemo@la-boutique-design.site', 'LaBoutiqueDesign'))
                     ->to($user->getEmail())
                     ->subject('Please Confirm your Email')
                     ->htmlTemplate('registration/confirmation_email.html.twig')
@@ -68,8 +70,10 @@ class RegistrationController extends AbstractController
             'active' => 'user'
         ]);
     }
-
-    #[Route('/verify/email', name: 'app_verify_email')]
+    
+    /**
+    * @Route("/verify/email", name="app_verify_email")
+    */
     public function verifyUserEmail(Request $request): Response
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
@@ -81,7 +85,7 @@ class RegistrationController extends AbstractController
             // $this->addFlash('verify_email_error', $exception->getReason());
             $this->addFlash('verify_email_error', 'L\'adresse email est invalide');
 
-            return $this->redirectToRoute('users_inscription');
+            return $this->redirectToRoute('app_register');
         }
 
         // @TODO Change the redirect on success and handle or remove the flash message in your templates

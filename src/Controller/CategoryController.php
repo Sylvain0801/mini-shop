@@ -11,11 +11,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('admin/category', name: 'admin_category_')]
+/**
+* @Route("/admin/category", name="admin_category_")
+*/   
 class CategoryController extends AbstractController
 {
-
-    #[Route('/categories', name: 'categories')]
+    /**
+    * @Route("/categories", name="categories")
+    */ 
     public function categoryList(CategoryRepository $categoryRepository): Response
     {
         return $this->render('includes/_categories.html.twig', [
@@ -24,7 +27,9 @@ class CategoryController extends AbstractController
         ]);
     }
 
-    #[Route('/list', name: 'list')]
+    /**
+    * @Route("/list", name="list")
+    */
     public function index(CategoryRepository $categoryRepository): Response
     {
         return $this->render('admin/category/index.html.twig', [
@@ -33,7 +38,9 @@ class CategoryController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'new')]
+    /**
+    * @Route("/new", name="new")
+    */
     public function newCategory(Request $request): Response
     {
         $category = new Category();
@@ -54,7 +61,10 @@ class CategoryController extends AbstractController
             ]);
     }
 
-    #[Route('/edit/{id}', name: 'edit')]
+    
+    /**
+    * @Route("/edit/{id}", name="edit")
+    */
     public function editCategory(Category $category, Request $request): Response
     {
         $form = $this->createForm(CategoryEditType::class, $category);
@@ -74,8 +84,10 @@ class CategoryController extends AbstractController
             'active' => 'user'
             ]);
     }
-        
-    #[Route('/delete/{id}', name: 'delete')]
+     
+    /**
+    * @Route("/delete/{id}", name="delete")
+    */   
     public function delete(Category $category): RedirectResponse
     {
         $em = $this->getDoctrine()->getManager();

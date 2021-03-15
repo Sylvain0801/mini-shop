@@ -11,18 +11,25 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/admin', name: 'admin_')]
+/**
+* @Route("/admin", name="admin_")
+*/
 class AdminController extends AbstractController
 {
-    #[Route('/', name: 'home')]
+    
+    /**
+    * @Route("/", name="home")
+    */
     public function index(): Response
     {
         return $this->render('admin/index.html.twig', [
             'active' => 'user'
         ]);
     }
-
-    #[Route('/user/list', name: 'user_list')]
+    
+    /**
+    * @Route("/user/list", name="user_list")
+    */
     public function usersList(UserRepository $userRepository): Response
     {
         return $this->render('admin/user/userslist.html.twig', [
@@ -31,7 +38,9 @@ class AdminController extends AbstractController
         ]);
     }
 
-    #[Route('/user/edit/{id}', name: 'user_edit')]
+    /**
+    * @Route("/user/list/{id}", name="user_edit")
+    */
     public function editUser(User $user, Request $request): Response
     {
         $form = $this->createForm(UserEditType::class, $user);
@@ -50,8 +59,10 @@ class AdminController extends AbstractController
             'active' => 'user'
             ]);
         }
-        
-    #[Route('/user/delete/{id}', name: 'user_delete')]
+    
+    /**
+    * @Route("/user/delete/{id}", name="user_delete")
+    */   
     public function delete(User $user): RedirectResponse
     {
         $em = $this->getDoctrine()->getManager();

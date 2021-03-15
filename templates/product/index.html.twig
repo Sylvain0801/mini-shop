@@ -24,12 +24,17 @@
   <div class="products-container">
     {% for product in products %}
     <div class="card-homepage">
-        {% if is_granted('ROLE_USER') %}          
+        {% if is_granted('ROLE_USER') %}
+          {% set checked = false %}   
+          <span>{{ product.favourites|length }}</span>
           {% for favourite in product.favourites %}
-            <input type="checkbox" class="star-favourite" {{ (favourite.id == app.user.id) ? ("checked title='Supprimer ce produit de vos favoris'") : ("title='Ajouter ce produit à vos favoris'") }} data-id="{{ product.id }}">
+            {% if favourite.id == app.user.id and checked == false %}
+              {% set checked = true %}
+            {% endif %}
           {% else %}
-            <input type="checkbox" class="star-favourite" title="Ajouter ce produit à vos favoris" data-id="{{ product.id }}">
+            {% set checked = false %}   
           {% endfor %}
+          <input type="checkbox" class="star-favourite" {{ checked ? "checked title='Supprimer ce produit de vos favoris'" : "title='Ajouter ce produit à vos favoris'" }} data-id="{{ product.id }}">
         {% endif %}
         <img src="{{ asset('images/products/'~product.imageName) }}" alt="{{ product.name }}">
         <div class="card-title">
@@ -50,5 +55,4 @@
     {% endfor %}
   </div>
 </div>
-<script src="{{ asset('assets/js/favouritebuttons.js') }}"></script>
 {% endblock %}
